@@ -17,15 +17,15 @@ public class SimilarityCalculationDemo {
         WS4JConfiguration.getInstance().setMFS(true);
         ILexicalDatabase db = new MITWordNet();
         rcs = new RelatednessCalculator[]{
-                new HirstStOnge(db), new LeacockChodorow(db), new Lesk(db), new WuPalmer(db),
-                new Resnik(db), new JiangConrath(db), new Lin(db), new Path(db)
+                new HirstStOnge(db), new LeacockChodorow(db), new Lesk(db),
+                new Resnik(db), new JiangConrath(db), new Lin(db), new Path(db), new WuPalmer(db)
         };
     }
 
     public static void main(String[] args) {
         long t = System.currentTimeMillis();
         Arrays.asList(rcs).forEach(rc -> System.out.println(rc.getClass().getName() + "\t" +
-                rc.calcRelatednessOfWords("act", "moderate")));
+                rc.calcRelatednessOfWords("disease", "cancer")));
         System.out.println("\nDone in " + (System.currentTimeMillis() - t) + " msec.");
     }
 }
